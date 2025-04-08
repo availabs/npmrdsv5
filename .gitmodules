@@ -1,0 +1,3 @@
+[submodule "src/dms"]
+	path = src/dms
+	url = git@github.com:availabs/dms.git

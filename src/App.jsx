@@ -15,7 +15,7 @@ function App() {
           adminConfig({
             // app: 'dms-docs',
             // type: 'pattern-admin'
-            app: 'nprdsv5',
+            app: 'npmrdsv5',
             type: 'dev2' 
           })
         }
