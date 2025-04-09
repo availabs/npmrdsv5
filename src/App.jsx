@@ -1,7 +1,8 @@
-import { DmsSite, adminConfig, registerComponents } from "./dms/src"
-import { withAuth, useAuth } from "@availabs/ams"
-import Auth from './pages/Auth'
-import themes from "./themes"
+import { DmsSite, adminConfig } from "~/modules/dms/src";
+import { withAuth } from "@availabs/ams";
+import Auth from './pages/Auth';
+import themes from "./themes";
+import DamaRoutes from "~/pages/DataManager";
 
 Auth.forEach(f => {
   f.Component = f.element 
@@ -11,7 +12,7 @@ Auth.forEach(f => {
 function App() {
   return ( 
       <DmsSite
-        dmsConfig = {
+        dmsConfig = { 
           adminConfig({
             // app: 'dms-docs',
             // type: 'pattern-admin'
@@ -22,7 +23,16 @@ function App() {
         authWrapper={withAuth}
         themes={themes}
         pgEnvs={['npmrds2']}
-        routes={[...Auth]}
+        routes={[...DamaRoutes({
+          baseUrl:'/npmrdsv5',
+          defaultPgEnv : "npmrds2",
+          // navSettings: authMenuConfig,
+          // dataTypes: hazmitDataTypes,
+          // useFalcor,
+          // useAuth
+        }),
+      // Auth
+      ...Auth]}
       />
   )
 }
