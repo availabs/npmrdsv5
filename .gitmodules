@@ -13,3 +13,7 @@
 [submodule "src/modules/ams"]
 	path = src/modules/ams
 	url = https://github.com/availabs/ams.git
+
+[submodule "src/modules/avail-falcor"]
+	path = src/modules/avail-falcor
+	url = git@github.com:availabs/avl-falcor.git
