@@ -1,12 +1,18 @@
-import { DmsSite, adminConfig } from "~/modules/dms/src";
-import { withAuth } from "@availabs/ams";
+import { DmsSite, adminConfig, registerComponents } from "~/modules/dms/src";
+import { withAuth,  } from "@availabs/ams";
 import Auth from './pages/Auth';
 import themes from "./themes";
-import DamaRoutes from "~/pages/DataManager";
+import DamaRoutes, { DamaMap, Map } from "~/pages/DataManager";
 import { useFalcor } from "~/modules/avail-falcor"
 import { useAuth } from "~/modules/ams/src"
 import LayoutWrapper from './layout/layout';
 import { API_HOST, AUTH_HOST } from './config'
+
+
+registerComponents({
+  "Map: Dama Map": DamaMap,
+  "Map": Map
+})
 
 Auth.forEach(f => {
   f.Component = f.element
@@ -31,7 +37,7 @@ function App() {
         [
           ...LayoutWrapper(
             DamaRoutes({
-              baseUrl: '/npmrdsv5',
+              baseUrl: '/datasets',
               defaultPgEnv: "npmrds2",
               useAuth,
               useFalcor
