@@ -1,10 +1,9 @@
 import { DmsSite, adminConfig, registerComponents } from "~/modules/dms/src";
-import { withAuth,  } from "@availabs/ams";
+import { withAuth, useAuth } from "@availabs/ams";
 import Auth from './pages/Auth';
 import themes from "./themes";
 import DamaRoutes, { DamaMap, Map } from "~/pages/DataManager";
-import { useFalcor } from "~/modules/avail-falcor"
-import { useAuth } from "~/modules/ams/src"
+import { useFalcor } from "./modules/avail-falcor"
 import LayoutWrapper from './layout/layout';
 import { API_HOST, AUTH_HOST } from './config'
 
