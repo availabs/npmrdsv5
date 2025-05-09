@@ -6,6 +6,10 @@ import {
   FalcorProvider,
   falcorGraph
 } from "./modules/avail-falcor"
+import {
+  ThemeContext
+} from "./modules/avl-components/src"
+import AVL_THEME from "./layout/avl-theme"
 import App from './App.jsx'
 
 const {
@@ -21,7 +25,9 @@ const AuthEnabledApp = authProvider(App, { AUTH_HOST, PROJECT_NAME, CLIENT_HOST 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <FalcorProvider falcor={falcor}>
-      <AuthEnabledApp />
+      <ThemeContext.Provider value={AVL_THEME}>
+        <AuthEnabledApp />
+      </ThemeContext.Provider>
     </FalcorProvider>
   </StrictMode>,
 )

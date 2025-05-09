@@ -1,10 +1,10 @@
 import React, { useLayoutEffect } from 'react';
-import { useNavigate, useLocation } from "react-router-dom";
-import { withAuth } from '~/modules/ams/src'
+import { useNavigate, useLocation } from "react-router";
+import { withAuth } from '@availabs/ams'
 import cloneDeep from 'lodash/cloneDeep'
 import checkAuth from './checkAuth'
-// import Layout from './avail-layout'
-const Layout = ({ children }) => <div>{children}</div>
+import Layout from './ppdaf-layout'
+//const Layout = ({ children }) => <div>{children}</div>
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -26,10 +26,11 @@ const LayoutWrapper = withAuth(({
   const location = useLocation();
 
   const { auth, authLevel, user } = props;
+  console.log('LayoutWrapper--------------', props, Layout)
 
-  React.useEffect(() => {
-    checkAuth({ auth, authLevel, user }, navigate, location);
-  }, [auth, authLevel, navigate, location]);
+  // React.useEffect(() => {
+  //   checkAuth({ auth, authLevel, user }, navigate, location);
+  // }, [auth, authLevel, navigate, location]);
 
 
   // console.log('LayoutWrapper props', props)
@@ -45,20 +46,20 @@ const LayoutWrapper = withAuth(({
   // }
 
   return (
-    <Wrapper>
       <Layout {...props}>
         <Child />
       </Layout>
-    </Wrapper>
   )
 })
 
 export default function DefaultLayoutWrapper(routes, layout = Layout) {
-  //console.log('routes', routes)
+  //console.log('routes', routes, layout)
   const menus = routes.filter(r => r.mainNav)
-  return routes.map(route => {
+  let output =  routes.map(route => {
     let out = cloneDeep(route)
     out.element = <LayoutWrapper {...out} Layout={layout} menus={menus} />
     return out
   })
+  //console.log('Layoutwrapper routes', output)
+  return output
 }

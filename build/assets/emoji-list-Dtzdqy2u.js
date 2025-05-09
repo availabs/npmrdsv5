@@ -1,0 +1,1 @@
+const i=[{description:"grinning face",emoji:"😀",category:"Smileys & Emotion",aliases:["grinning"],tags:["smile","happy"],unicode_version:"6.1",ios_version:"6.0"},{emoji:"😃",description:"grinning face with big eyes",category:"Smileys & Emotion",aliases:["smiley"],tags:["happy","joy","haha"],unicode_version:"6.0",ios_version:"6.0"}];export{i as default};
