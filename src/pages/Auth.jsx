@@ -1,4 +1,5 @@
-import { amsFactory } from "@availabs/ams"
+// import { amsFactory } from "@availabs/ams"
+import { amsFactory } from "~/modules/ams/src";
 
 const AuthConfig = {
   children: [
